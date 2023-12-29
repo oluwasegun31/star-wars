@@ -1,0 +1,9 @@
+body, html{
+    max-width: 1440px;
+    background-color: #710e09;
+    color: #fff;
+    margin: 0 auto;
+    font-family: 'Chillax', sans-serif;
+    position: relative;
+    overflow-x: hidden;
+}
