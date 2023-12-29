@@ -117,7 +117,7 @@ export default function RootLayout() {
                   to="/"
                   className={({ isActive }) =>
                     isActive
-                      ? "border-b border-b-primary font-medium"
+                      ? "border-b-2 border-b-primary font-medium"
                       : "border-b-0"
                   }
                 >
