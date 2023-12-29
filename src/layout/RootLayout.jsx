@@ -90,7 +90,7 @@ export default function RootLayout() {
         <AnimatePresence mode="wait">
           {isOpen && (
             <motion.section
-              className="fixed top-0 left-0 lg:w-[40%] sm:w-[60%] w-[90%] h-screen bg-white grid place-content-center gap-4 text-primary text-4xl text-center"
+              className="fixed top-0 left-0 lg:w-[40%] sm:w-[60%] w-[90%] h-screen bg-white grid place-content-center gap-4 text-primary text-4xl text-center z-10"
               variants={navbarVariant}
               initial="initial"
               animate="animate"
@@ -152,7 +152,7 @@ export default function RootLayout() {
           )}
         </AnimatePresence>
       </header>
-      <main className="min-h-screen">
+      <main className={`min-h-screen ${isOpen && "blur-sm"}`}>
         <Outlet />
       </main>
       <footer></footer>

@@ -7,3 +7,6 @@ body, html{
     position: relative;
     overflow-x: hidden;
 }
+.landing-img{
+    background-image: url("./assets/landing-bg.webp");
+}
