@@ -152,7 +152,7 @@ export default function RootLayout() {
           )}
         </AnimatePresence>
       </header>
-      <main className={`min-h-screen ${isOpen && "blur-sm"}`}>
+      <main className={`${isOpen && "blur-sm"}`}>
         <Outlet />
       </main>
       <footer></footer>
