@@ -1,4 +1,5 @@
 import {
+  Outlet,
   Route,
   RouterProvider,
   createBrowserRouter,
@@ -7,13 +8,25 @@ import {
 import "./App.css";
 import { MainLoader } from "./components";
 import RootLayout from "./layout/RootLayout";
-import { HomePage } from "./pages";
+import { HomePage, SignInPage, SignUpPage } from "./pages";
+import { Suspense } from "react";
 
 function App() {
   const router = createBrowserRouter(
     createRoutesFromChildren(
       <Route path="/" element={<RootLayout />}>
         <Route index element={<HomePage />} />
+        <Route
+          path="auth"
+          element={
+            <Suspense fallback={<MainLoader />}>
+              <Outlet />
+            </Suspense>
+          }
+        >
+          <Route path="signup" element={<SignUpPage />} />
+          <Route path="signin" element={<SignInPage />} />
+        </Route>
       </Route>
     )
   );

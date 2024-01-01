@@ -2,14 +2,17 @@ import { NavLink, Outlet } from "react-router-dom";
 import Logo from "../assets/Logo.webp";
 import { AnimatePresence, motion } from "framer-motion";
 import { useState } from "react";
-
+// RootLayout component for the application's overall structure
 export default function RootLayout() {
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false); // State to control navigation menu visibility
+  // Variants for animated navigation menu
   const navbarVariant = {
+    // Initial state: menu hidden off-screen
     initial: {
       x: -100,
       opacity: 0,
     },
+    // Animated state: menu slides in smoothly
     animate: {
       x: 0,
       opacity: 1,
@@ -20,6 +23,7 @@ export default function RootLayout() {
         staggerChildren: 0.1,
       },
     },
+    // Exit state: menu slides out quickly
     exit: {
       x: -100,
       opacity: 0,
@@ -30,15 +34,19 @@ export default function RootLayout() {
       },
     },
   };
+  // Variants for animated navigation list items
   const navListVariant = {
+    // Initial state: list items hidden off-screen
     initial: {
       x: 100,
       opacity: 0,
     },
+    // Animated state: list items slide in
     animate: {
       x: 0,
       opacity: 1,
     },
+    // Exit state: list items slide out
     exit: {
       x: 100,
       opacity: 0,
