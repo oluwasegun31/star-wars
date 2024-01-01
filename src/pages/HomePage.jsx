@@ -94,6 +94,8 @@ export default function HomePage() {
             src={ashoka}
             alt="ashoka"
             className="md:w-52 sm:w-44 w-36  md:h-64 sm:h-56 h-40 object-cover"
+            width={208}
+            height={256}
           />
         </div>
         <div ref={planetRef}>
@@ -118,6 +120,8 @@ export default function HomePage() {
             src={tatooine}
             alt="ashoka"
             className="md:w-52 sm:w-44 w-36  md:h-64 sm:h-56 h-40 object-cover"
+            width={208}
+            height={256}
           />
         </div>
         <div ref={starshipRef}>
@@ -142,6 +146,8 @@ export default function HomePage() {
             src={starDestroyer}
             alt="ashoka"
             className="md:w-52 w-44 md:h-64 h-56 md:object-contain object-cover"
+            width={208}
+            height={256}
           />
         </div>
       </section>

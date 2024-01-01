@@ -155,7 +155,11 @@ export default function RootLayout() {
       <main className={`${isOpen && "blur-sm"}`}>
         <Outlet />
       </main>
-      <footer></footer>
+      <footer className="mt-12 border-t border-t-slate-200 p-4 flex sm:flex-row flex-col justify-center items-center sm:gap-12 gap-2  text-[20px] font-normal">
+        <p>Privacy Policies</p>
+        <img src={Logo} alt="logo" className="w-8 h-8" />
+        <p>Copyright@2024</p>
+      </footer>
     </>
   );
 }
