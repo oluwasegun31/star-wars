@@ -10,6 +10,7 @@ import { MainLoader } from "./components";
 import RootLayout from "./layout/RootLayout";
 import { HomePage, SignInPage, SignUpPage } from "./pages";
 import { Suspense } from "react";
+import { InputFormProvider } from "./context";
 
 function App() {
   const router = createBrowserRouter(
@@ -20,7 +21,9 @@ function App() {
           path="auth"
           element={
             <Suspense fallback={<MainLoader />}>
-              <Outlet />
+              <InputFormProvider>
+                <Outlet />
+              </InputFormProvider>
             </Suspense>
           }
         >

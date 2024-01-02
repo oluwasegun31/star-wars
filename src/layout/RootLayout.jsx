@@ -122,7 +122,7 @@ export default function RootLayout() {
               </svg>
               <motion.div variants={navListVariant}>
                 <NavLink
-                  to="/"
+                  to="characters"
                   className={({ isActive }) =>
                     isActive
                       ? "border-b-2 border-b-primary font-medium"

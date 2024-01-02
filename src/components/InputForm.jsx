@@ -1,7 +1,31 @@
 import googleIcon from "../assets/google.webp";
 import githubIcon from "../assets/github.webp";
+import { useContext } from "react";
+import { InputFormContext } from "../context";
+import { googleAuth, googleError } from "../authentication/GoogleAuth";
+import { GithubAuth, githubError } from "../authentication/GithubAuth";
+// input form component used for signup and sign in
+export default function InputForm({ formType, onClick }) {
+  // Access input form context values
+  const { emailRef, passwordRef, isLoading, setIsLoading, setIsError } =
+    useContext(InputFormContext);
+  // Function for Google authentication
+  const googleAuthentication = async () => {
+    setIsLoading(true); // Set loading state to true
+    const success = await googleAuth(); // Trigger Google authentication
+    // Set success message if auth success error message if authentication fails
+    success ? console.log("yaaaaah") : setIsError(googleError);
+    setIsLoading(false); // Set loading state to false
+  };
+  // signin with github;
+  const githubAuthentication = async () => {
+    setIsLoading(true); // Set loading state to true
+    const success = await GithubAuth(); // Trigger Github authentication
+    // Set success message if auth success error message if authentication fails
+    success ? console.log("yaaaaah") : setIsError(githubError);
+    setIsLoading(false); // Set loading state to false
+  };
 
-export default function InputForm({ formType }) {
   return (
     <>
       <form className="sm:w-[70%] w-full mx-auto mb-3">
@@ -12,6 +36,7 @@ export default function InputForm({ formType }) {
               type="email"
               name="email"
               id="email"
+              ref={emailRef}
               className="w-full bg-transparent outline-none border-b border-b-slate-200/35 focus:border-b-slate-200 pr-8"
             />
             <svg
@@ -38,6 +63,8 @@ export default function InputForm({ formType }) {
               type="password"
               name="password"
               id="password"
+              autoComplete="true"
+              ref={passwordRef}
               className="w-full bg-transparent outline-none border-b border-b-slate-200/35 focus:border-b-slate-200 pr-8"
             />
             <svg
@@ -59,9 +86,11 @@ export default function InputForm({ formType }) {
         </div>
         <button
           type="button"
-          className="w-full bg-white text-primary py-2 sm:text-[20px] text-lg font-medium capitalize"
+          className="w-full bg-white text-primary py-2 sm:text-[20px] text-lg font-medium capitalize outline-none disabled:bg-white/50"
+          onClick={() => onClick()}
+          disabled={isLoading ? true : false}
         >
-          {formType}
+          {isLoading ? ". . . . ." : formType}
         </button>
       </form>
       <p>or {formType} with</p>
@@ -72,6 +101,7 @@ export default function InputForm({ formType }) {
           src={googleIcon}
           alt="google-logo"
           className="sm:w-10 w-8 sm:h-10 h-8 cursor-pointer"
+          onClick={() => googleAuthentication()}
         />
         <img
           width="40"
@@ -79,6 +109,7 @@ export default function InputForm({ formType }) {
           src={githubIcon}
           alt="github-logo"
           className="sm:w-10 w-8 sm:h-10 h-8 cursor-pointer"
+          onClick={() => githubAuthentication()}
         />
       </div>
     </>
