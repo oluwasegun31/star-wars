@@ -1,4 +1,4 @@
-import { useContext, useRef, useState } from "react";
+import { Suspense, useContext, useRef, useState } from "react";
 import { InputFormContext } from "../../context";
 import { FormError } from "../../components";
 import {
@@ -37,7 +37,11 @@ export default function ResetPasswordPage() {
   };
   return (
     <section className="w-full min-h-screen grid place-content-center gap-6 text-center relative">
-      {isError && <FormError isError={isError} />}
+      {isError && (
+        <Suspense fallback={<p className="absolute top-0 right-0"></p>}>
+          <FormError isError={isError} />
+        </Suspense>
+      )}
       <section>
         <h4 className="sm:text-6xl text-4xl font-medium capitalize">
           Reset Password

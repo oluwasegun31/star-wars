@@ -8,9 +8,16 @@ import {
 import "./App.css";
 import { MainLoader } from "./components";
 import RootLayout from "./layout/RootLayout";
-import { HomePage, ResetPasswordPage, SignInPage, SignUpPage } from "./pages";
+import {
+  AccountSetupPage,
+  HomePage,
+  ResetPasswordPage,
+  SignInPage,
+  SignUpPage,
+} from "./pages";
 import { Suspense } from "react";
-import { InputFormProvider } from "./context";
+import { GlobalUserProvider, InputFormProvider } from "./context";
+import ProtectRoute from "./layout/ProtectRoute";
 
 function App() {
   const router = createBrowserRouter(
@@ -31,10 +38,23 @@ function App() {
           <Route path="signin" element={<SignInPage />} />
           <Route path="forgot-password" element={<ResetPasswordPage />} />
         </Route>
+        <Route
+          element={
+            <Suspense fallback={<MainLoader />}>
+              <ProtectRoute />
+            </Suspense>
+          }
+        >
+          <Route path="account-setup" element={<AccountSetupPage />} />
+        </Route>
       </Route>
     )
   );
-  return <RouterProvider router={router} />;
+  return (
+    <GlobalUserProvider>
+      <RouterProvider router={router} />
+    </GlobalUserProvider>
+  );
 }
 
 export default App;
