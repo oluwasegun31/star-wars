@@ -1,8 +1,8 @@
 import { Suspense, useContext } from "react";
-import { FormError, InputForm } from "../components";
-import { useNavigate } from "react-router-dom";
-import { InputFormContext } from "../context";
-import { signinError, userSignin } from "../authentication/SignIn";
+import { FormError, InputForm } from "../../components";
+import { Link, useNavigate } from "react-router-dom";
+import { InputFormContext } from "../../context";
+import { signinError, userSignin } from "../../authentication/SignIn";
 
 export default function SignInPage() {
   const navigate = useNavigate();
@@ -52,6 +52,12 @@ export default function SignInPage() {
             Sign up
           </span>
         </p>
+        <Link
+          to={"/auth/forgot-password"}
+          className="text-blue-700 text-lg underline"
+        >
+          Forgot password?
+        </Link>
       </section>
     </section>
   );

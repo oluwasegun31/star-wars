@@ -8,7 +8,7 @@ import {
 import "./App.css";
 import { MainLoader } from "./components";
 import RootLayout from "./layout/RootLayout";
-import { HomePage, SignInPage, SignUpPage } from "./pages";
+import { HomePage, ResetPasswordPage, SignInPage, SignUpPage } from "./pages";
 import { Suspense } from "react";
 import { InputFormProvider } from "./context";
 
@@ -29,6 +29,7 @@ function App() {
         >
           <Route path="signup" element={<SignUpPage />} />
           <Route path="signin" element={<SignInPage />} />
+          <Route path="forgot-password" element={<ResetPasswordPage />} />
         </Route>
       </Route>
     )

@@ -1,9 +1,9 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import Marquee from "react-fast-marquee";
-import ashoka from "../assets/ashoka.webp";
-import tatooine from "../assets/tatooine-wide.webp";
-import starDestroyer from "../assets/Star-Destroyer.webp";
+import ashoka from "../../assets/ashoka.webp";
+import tatooine from "../../assets/tatooine-wide.webp";
+import starDestroyer from "../../assets/Star-Destroyer.webp";
 // Home Page
 export default function HomePage() {
   // Store main text for animation

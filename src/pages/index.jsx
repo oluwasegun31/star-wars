@@ -1,5 +1,6 @@
 import { lazy } from "react";
 
-export { default as HomePage } from "./HomePage";
-export const SignUpPage = lazy(() => import("./SignUpPage"));
-export const SignInPage = lazy(() => import("./SignInPage"));
+export { default as HomePage } from "./public/HomePage";
+export const SignUpPage = lazy(() => import("./public/SignUpPage"));
+export const SignInPage = lazy(() => import("./public/SignInPage"));
+export const ResetPasswordPage = lazy(() => import("./public/ResetPassword"));

@@ -1,8 +1,8 @@
-import { Suspense, useContext, useState } from "react";
-import { FormError, InputForm } from "../components";
+import { Suspense, useContext } from "react";
+import { FormError, InputForm } from "../../components";
 import { useNavigate } from "react-router-dom";
-import { userSignup, signupError } from "../authentication/SignUp";
-import { InputFormContext } from "../context";
+import { userSignup, signupError } from "../../authentication/SignUp";
+import { InputFormContext } from "../../context";
 
 export default function SignUpPage() {
   const { emailRef, passwordRef, setIsLoading, setIsError, isError } =
