@@ -5,6 +5,8 @@ import {
 } from "../../authentication/AccountSetup";
 import UseFetchIcons from "../../hooks/UseFetchIcons";
 import { FormError } from "../../components";
+import { motion } from "framer-motion";
+import { useNavigate } from "react-router-dom";
 
 export default function AccountSetup() {
   const { icons } = UseFetchIcons("icons"); // Fetch icons using the UseFetchIcons hook
@@ -13,6 +15,7 @@ export default function AccountSetup() {
   const [photoUrl, setPhotoUrl] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
+  const navigate = useNavigate();
   // Function to handle form submission
   const updateAccount = async (e) => {
     e.preventDefault();
@@ -30,7 +33,7 @@ export default function AccountSetup() {
     if (success) {
       setIsLoading(false);
       setIsError(false);
-      console.log("yaaaaah");
+      navigate("/", { replace: true }); // navigate to home page.
     } else {
       setIsLoading(false);
       setIsError("something went wrong");
@@ -95,10 +98,10 @@ export default function AccountSetup() {
                 </svg>
               )}
             </div>
-            <div className="w-full flex flex-wrap justify-center items-center gap-4 my-3">
+            <motion.div className="w-full flex flex-wrap justify-center items-center gap-4 my-3">
               {icons.map((item, i) => {
                 return (
-                  <img
+                  <motion.img
                     src={item}
                     alt="item"
                     key={i}
@@ -106,10 +109,13 @@ export default function AccountSetup() {
                     width={64}
                     height={64}
                     onClick={(e) => setPhotoUrl(e.target.src)}
+                    initial={{ scale: 0, opacity: 0 }}
+                    animate={{ scale: 1, opacity: 1 }}
+                    transition={{ type: "spring", stiffness: 300 }}
                   />
                 );
               })}
-            </div>
+            </motion.div>
           </div>
           <button
             type="submit"

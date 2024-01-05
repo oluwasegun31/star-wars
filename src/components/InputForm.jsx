@@ -4,26 +4,50 @@ import { useContext } from "react";
 import { InputFormContext } from "../context";
 import { googleAuth, googleError } from "../authentication/GoogleAuth";
 import { GithubAuth, githubError } from "../authentication/GithubAuth";
+import { useLocation, useNavigate } from "react-router-dom";
 // input form component used for signup and sign in
 export default function InputForm({ formType, onClick }) {
   // Access input form context values
   const { emailRef, passwordRef, isLoading, setIsLoading, setIsError } =
     useContext(InputFormContext);
+  // Access browser location and navigation
+  const location = useLocation();
+  const navigate = useNavigate();
   // Function for Google authentication
   const googleAuthentication = async () => {
     setIsLoading(true); // Set loading state to true
     const success = await googleAuth(); // Trigger Google authentication
-    // Set success message if auth success error message if authentication fails
-    success ? console.log("yaaaaah") : setIsError(googleError);
-    setIsLoading(false); // Set loading state to false
+    // Navigate to respective page if auth success, error message if authentication fails
+    if (success) {
+      setIsLoading(false); // Set loading state to false
+      location.state
+        ? navigate(location.state?.from, { replace: true })
+        : navigate("/", { replace: true });
+    } else {
+      setIsError(googleError);
+      setTimeout(() => setIsError(false), 4000);
+    }
   };
   // signin with github;
   const githubAuthentication = async () => {
     setIsLoading(true); // Set loading state to true
     const success = await GithubAuth(); // Trigger Github authentication
-    // Set success message if auth success error message if authentication fails
-    success ? console.log("yaaaaah") : setIsError(githubError);
-    setIsLoading(false); // Set loading state to false
+    // Navigate to respective page if auth success, error message if authentication fails
+    if (success) {
+      setIsLoading(false); // Set loading state to false
+      location.state
+        ? navigate(location.state?.from, { replace: true })
+        : navigate("/", { replace: true });
+    } else {
+      setIsError(githubError);
+      setTimeout(() => setIsError(false), 4000);
+    }
+  };
+  // Function to toggle password visibility
+  const togglePassword = () => {
+    passwordRef.current.type === "password"
+      ? (passwordRef.current.type = "text")
+      : (passwordRef.current.type = "password");
   };
 
   return (
@@ -73,6 +97,7 @@ export default function InputForm({ formType, onClick }) {
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
               viewBox="0 0 16 20"
+              onClick={() => togglePassword()}
             >
               <path
                 stroke="currentColor"

@@ -1,10 +1,11 @@
-import { NavLink, Outlet } from "react-router-dom";
+import { NavLink, Outlet, useNavigate } from "react-router-dom";
 import Logo from "../assets/Logo.webp";
 import { AnimatePresence, motion } from "framer-motion";
 import { useState } from "react";
 // RootLayout component for the application's overall structure
 export default function RootLayout() {
   const [isOpen, setIsOpen] = useState(false); // State to control navigation menu visibility
+  const navigate = useNavigate(); // Access navigation function
   // Variants for animated navigation menu
   const navbarVariant = {
     // Initial state: menu hidden off-screen
@@ -75,7 +76,12 @@ export default function RootLayout() {
             </svg>
           </section>
           <section>
-            <img src={Logo} alt="logo" className="w-8 h-8 object-contain" />
+            <img
+              src={Logo}
+              alt="logo"
+              className="w-8 h-8 object-contain cursor-pointer"
+              onClick={() => navigate("/")}
+            />
           </section>
           <section className="flex justify-center items-center gap-4">
             <svg

@@ -9,6 +9,6 @@ export default function ProtectRoute() {
   return user ? (
     <Outlet />
   ) : (
-    <Navigate to={"/auth/signin"} state={{ from: location.state }} replace />
+    <Navigate to={"/auth/signin"} state={{ from: location.pathname }} replace />
   );
 }

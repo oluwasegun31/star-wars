@@ -1,6 +1,6 @@
 import { Suspense, useContext } from "react";
 import { FormError, InputForm } from "../../components";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { InputFormContext } from "../../context";
 import { signinError, userSignin } from "../../authentication/SignIn";
 
@@ -8,6 +8,7 @@ export default function SignInPage() {
   const navigate = useNavigate();
   const { emailRef, passwordRef, setIsLoading, setIsError, isError } =
     useContext(InputFormContext);
+  const location = useLocation();
   const signinUser = async () => {
     setIsLoading(true);
     const email = emailRef.current.value;
@@ -20,9 +21,11 @@ export default function SignInPage() {
     }
     if (success) {
       setIsLoading(false);
-      console.log("yaaaaaaah");
       emailRef.current.value = "";
       passwordRef.current.value = "";
+      location.state
+        ? navigate(location.state?.from, { replace: true })
+        : navigate("/", { replace: true });
     } else {
       setIsLoading(false);
       console.log(signinError);
