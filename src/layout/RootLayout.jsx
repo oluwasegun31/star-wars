@@ -134,6 +134,7 @@ export default function RootLayout() {
                       ? "border-b-2 border-b-primary font-medium"
                       : "border-b-0"
                   }
+                  onClick={() => setIsOpen(false)}
                 >
                   Characters
                 </NavLink>
@@ -146,6 +147,7 @@ export default function RootLayout() {
                       ? "border-b border-b-primary font-medium"
                       : "border-b-0"
                   }
+                  onClick={() => setIsOpen(false)}
                 >
                   Planets
                 </NavLink>
@@ -158,6 +160,7 @@ export default function RootLayout() {
                       ? "border-b border-b-primary font-medium"
                       : "border-b-0"
                   }
+                  onClick={() => setIsOpen(false)}
                 >
                   Spaceships
                 </NavLink>

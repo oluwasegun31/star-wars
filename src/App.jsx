@@ -10,6 +10,7 @@ import { MainLoader } from "./components";
 import RootLayout from "./layout/RootLayout";
 import {
   AccountSetupPage,
+  CharactersPage,
   HomePage,
   ResetPasswordPage,
   SignInPage,
@@ -46,6 +47,9 @@ function App() {
           }
         >
           <Route path="account-setup" element={<AccountSetupPage />} />
+          <Route path="characters">
+            <Route index element={<CharactersPage />} />
+          </Route>
         </Route>
       </Route>
     )
