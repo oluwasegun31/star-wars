@@ -12,9 +12,11 @@ import {
   AccountSetupPage,
   CharactersPage,
   HomePage,
+  PlanetsPage,
   ResetPasswordPage,
   SignInPage,
   SignUpPage,
+  StarshipsPage,
 } from "./pages";
 import { Suspense } from "react";
 import { GlobalUserProvider, InputFormProvider } from "./context";
@@ -49,6 +51,12 @@ function App() {
           <Route path="account-setup" element={<AccountSetupPage />} />
           <Route path="characters">
             <Route index element={<CharactersPage />} />
+          </Route>
+          <Route path="planets">
+            <Route index element={<PlanetsPage />} />
+          </Route>
+          <Route path="starships">
+            <Route index element={<StarshipsPage />} />
           </Route>
         </Route>
       </Route>

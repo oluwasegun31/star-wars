@@ -1,12 +1,12 @@
-import { motion } from "framer-motion";
 import UseFetchFirestore from "../../hooks/UseFetchFirestore";
+import { motion } from "framer-motion";
 import { DataCard, DataCardLoader } from "../../components";
 import { Suspense } from "react";
 import { letterReveal2 } from "../../Animation/Animation";
 
-export default function Characters() {
+export default function Starships() {
   // Fetch characters data from Firestore using the custom hook
-  const { dataArr: characters, isLoading } = UseFetchFirestore("characters");
+  const { dataArr: starships, isLoading } = UseFetchFirestore("starships");
 
   return (
     <section className="w-full min-h-screen flex flex-col justify-start items-start gap-6 mt-6 px-4">
@@ -17,7 +17,7 @@ export default function Characters() {
           initial="hidden"
           animate="visible"
         >
-          {"Characters".split("").map((letters, i) => {
+          {"starships".split("").map((letters, i) => {
             return (
               <motion.span key={i} variants={letterReveal2}>
                 {letters}
@@ -31,8 +31,8 @@ export default function Characters() {
           {isLoading ? (
             <DataCardLoader />
           ) : (
-            characters.map((character) => {
-              return <DataCard data={character} key={character.id} />;
+            starships.map((starship) => {
+              return <DataCard data={starship} key={starship.id} />;
             })
           )}
         </Suspense>

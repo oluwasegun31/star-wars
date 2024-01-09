@@ -4,6 +4,7 @@ import Marquee from "react-fast-marquee";
 import ashoka from "../../assets/ashoka.webp";
 import tatooine from "../../assets/Tatooine-wide.webp";
 import starDestroyer from "../../assets/Star-Destroyer.webp";
+import { featuredReveal, letterReveal } from "../../Animation/Animation";
 // Home Page
 export default function HomePage() {
   // Store main text for animation
@@ -16,24 +17,6 @@ export default function HomePage() {
   const isInView = useInView(characterRef, { amount: 0.5 });
   const isInView2 = useInView(planetRef, { amount: 0.5 });
   const isInView3 = useInView(starshipRef, { amount: 0.5 });
-  // Animation variants for letter reveal
-  const letterReveal = {
-    hidden: { y: 100, opacity: 0 },
-    visible: {
-      y: 0,
-      opacity: 1,
-      transition: { staggerChildren: 0.05, type: "spring" },
-    },
-  };
-  // Animation variants for scaling and fading in
-  const featuredReveal = {
-    hidden: { scale: 0, opacity: 0 },
-    visible: {
-      scale: 1,
-      opacity: 1,
-      transition: { type: "spring", duration: 0.5 },
-    },
-  };
 
   return (
     <>

@@ -154,7 +154,7 @@ export default function RootLayout() {
               </motion.div>
               <motion.div variants={navListVariant}>
                 <NavLink
-                  to="spaceships"
+                  to="starships"
                   className={({ isActive }) =>
                     isActive
                       ? "border-b border-b-primary font-medium"
@@ -162,7 +162,7 @@ export default function RootLayout() {
                   }
                   onClick={() => setIsOpen(false)}
                 >
-                  Spaceships
+                  Starships
                 </NavLink>
               </motion.div>
             </motion.section>
