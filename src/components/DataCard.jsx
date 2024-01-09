@@ -19,7 +19,7 @@ export default function DataCard({ data }) {
         alt={`image of ${data.name}`}
         className="sm:w-28 w-24 object-contain sm:absolute relative sm:-top-6 top-auto sm:right-10 right-auto mx-auto"
         width={112}
-        height={"auto"}
+        height={140}
       />
       <p className="sm:text-xl text-base leading-none font-medium">
         {nameTag(data.name)}

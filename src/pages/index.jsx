@@ -8,3 +8,4 @@ export const AccountSetupPage = lazy(() => import("./private/AccountSetup"));
 export const CharactersPage = lazy(() => import("./private/Characters"));
 export const PlanetsPage = lazy(() => import("./private/Planets"));
 export const StarshipsPage = lazy(() => import("./private/StarShips"));
+export const SettingsPage = lazy(() => import("./private/Settings"));

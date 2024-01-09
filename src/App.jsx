@@ -14,6 +14,7 @@ import {
   HomePage,
   PlanetsPage,
   ResetPasswordPage,
+  SettingsPage,
   SignInPage,
   SignUpPage,
   StarshipsPage,
@@ -58,6 +59,7 @@ function App() {
           <Route path="starships">
             <Route index element={<StarshipsPage />} />
           </Route>
+          <Route path="settings" element={<SettingsPage />} />
         </Route>
       </Route>
     )

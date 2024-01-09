@@ -1,6 +1,7 @@
 import { onAuthStateChanged } from "firebase/auth";
 import { createContext, useEffect, useState } from "react";
 import { auth } from "../firebase/config";
+import logo from "../assets/Logo.webp";
 
 export const GlobalUserContext = createContext(null);
 /**
@@ -25,8 +26,14 @@ export const GlobalUserProvider = ({ children }) => {
   return (
     <GlobalUserContext.Provider value={{ user, setUser }}>
       {isLoading ? (
-        <section className="grid place-content-center text-8xl font-medium w-full h-screen">
-          WELCOME
+        <section className="grid place-content-center font-medium w-full h-screen">
+          <img
+            src={logo}
+            alt="logo"
+            className="sm:w-28 w-24 sm:h-28 h-24 object-contain animate-pulse"
+            width={112}
+            height={112}
+          />
         </section>
       ) : (
         children

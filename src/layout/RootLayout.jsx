@@ -1,58 +1,18 @@
-import { NavLink, Outlet, useNavigate } from "react-router-dom";
+import { NavLink, Navigate, Outlet, useNavigate } from "react-router-dom";
 import Logo from "../assets/Logo.webp";
 import { AnimatePresence, motion } from "framer-motion";
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { navListVariant, navbarVariant } from "../Animation/Animation";
+import { GlobalUserContext } from "../context";
 // RootLayout component for the application's overall structure
 export default function RootLayout() {
   const [isOpen, setIsOpen] = useState(false); // State to control navigation menu visibility
   const navigate = useNavigate(); // Access navigation function
-  // Variants for animated navigation menu
-  const navbarVariant = {
-    // Initial state: menu hidden off-screen
-    initial: {
-      x: -100,
-      opacity: 0,
-    },
-    // Animated state: menu slides in smoothly
-    animate: {
-      x: 0,
-      opacity: 1,
-      transition: {
-        duration: 0.3,
-        type: "spring",
-        when: "beforeChildren",
-        staggerChildren: 0.1,
-      },
-    },
-    // Exit state: menu slides out quickly
-    exit: {
-      x: -100,
-      opacity: 0,
-      transition: {
-        duration: 0.1,
-        when: "afterChildren",
-        staggerChildren: 0.04,
-      },
-    },
+  const { user } = useContext(GlobalUserContext);
+  const navigateUser = () => {
+    return user ? navigate("/settings") : navigate("/auth/signin");
   };
-  // Variants for animated navigation list items
-  const navListVariant = {
-    // Initial state: list items hidden off-screen
-    initial: {
-      x: 100,
-      opacity: 0,
-    },
-    // Animated state: list items slide in
-    animate: {
-      x: 0,
-      opacity: 1,
-    },
-    // Exit state: list items slide out
-    exit: {
-      x: 100,
-      opacity: 0,
-    },
-  };
+
   return (
     <>
       <header>
@@ -83,22 +43,35 @@ export default function RootLayout() {
               onClick={() => navigate("/")}
             />
           </section>
-          <section className="flex justify-center items-center gap-4">
-            <svg
-              className="w-6 h-6 text-gray-800 dark:text-white"
-              aria-hidden="true"
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 20 18"
-            >
-              <path
-                stroke="currentColor"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="M13 8h6m-3 3V5m-6-.5a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0ZM5 11h3a4 4 0 0 1 4 4v2H1v-2a4 4 0 0 1 4-4Z"
+          <section
+            className="flex justify-center items-center gap-4 cursor-pointer"
+            onClick={() => navigateUser()}
+          >
+            {user ? (
+              <img
+                src={user.photoURL}
+                alt="profile pics"
+                className="w-8 h-8"
+                width={32}
+                height={32}
               />
-            </svg>
+            ) : (
+              <svg
+                className="w-6 h-6 text-gray-800 dark:text-white"
+                aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 20 18"
+              >
+                <path
+                  stroke="currentColor"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M13 8h6m-3 3V5m-6-.5a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0ZM5 11h3a4 4 0 0 1 4 4v2H1v-2a4 4 0 0 1 4-4Z"
+                />
+              </svg>
+            )}
           </section>
         </nav>
         <AnimatePresence mode="wait">
