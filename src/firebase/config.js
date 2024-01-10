@@ -6,13 +6,13 @@ import { getFirestore } from "firebase/firestore";
 
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
-  apiKey: "AIzaSyDreez-rOZst1cBlf0MVcQ05KdZ7fzHDOw",
-  authDomain: "starwars-ad028.firebaseapp.com",
-  projectId: "starwars-ad028",
-  storageBucket: "starwars-ad028.appspot.com",
-  messagingSenderId: "45617581945",
-  appId: "1:45617581945:web:d9eaa88444f983e3bfe9a8",
-  measurementId: "G-FJZ97X2SWE",
+  apiKey: import.meta.env.VITE_API_KEY,
+  authDomain: import.meta.env.VITE_AUTH_DOMAIN,
+  projectId: import.meta.env.VITE_PROJECT_ID,
+  storageBucket: import.meta.env.VITE_STORAGE_BUCKET,
+  messagingSenderId: import.meta.env.VITE_MESSAGING_SENDER_ID,
+  appId: import.meta.env.VITE_APP_ID,
+  measurementId: import.meta.env.VITE_MEASUREMENT_ID,
 };
 
 // Initialize Firebase
