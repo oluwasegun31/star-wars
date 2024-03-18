@@ -29,19 +29,19 @@ export default function SignInPage() {
     } else {
       setIsLoading(false);
       console.log(signinError);
-      signinError === "Firebase: Error (auth/invalid-credential)"
+      signinError === "Firebase: Error (auth/invalid-credential)."
         ? setIsError("Invalid Email or Password")
         : setIsError("something went wrong");
     }
   };
   return (
-    <section className="w-full min-h-screen flex flex-col justify-center items-center gap-6 text-center relative">
+    <section className="relative flex flex-col items-center justify-center w-full min-h-screen gap-6 text-center">
       {isError && (
         <Suspense>
           <FormError isError={isError} />
         </Suspense>
       )}
-      <p className="sm:text-6xl text-4xl font-medium">Sign In</p>
+      <p className="text-4xl font-medium sm:text-6xl">Sign In</p>
       <section className="sm:w-[600px] w-[90%] px-4 py-12 bg-orange-700/20 rounded-lg">
         <Suspense fallback={<p>...</p>}>
           <InputForm formType={"sign in"} onClick={() => signinUser()} />
@@ -49,7 +49,7 @@ export default function SignInPage() {
         <p className="mt-4">
           Don't Have an account?{" "}
           <span
-            className="text-blue-800 font-medium cursor-pointer"
+            className="font-medium text-blue-800 cursor-pointer"
             onClick={() => navigate("/auth/signup")}
           >
             Sign up
@@ -57,7 +57,7 @@ export default function SignInPage() {
         </p>
         <Link
           to={"/auth/forgot-password"}
-          className="text-blue-700 text-lg underline"
+          className="text-lg text-blue-700 underline"
         >
           Forgot password?
         </Link>

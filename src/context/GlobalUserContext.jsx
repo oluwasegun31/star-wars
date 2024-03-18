@@ -26,11 +26,11 @@ export const GlobalUserProvider = ({ children }) => {
   return (
     <GlobalUserContext.Provider value={{ user, setUser }}>
       {isLoading ? (
-        <section className="grid place-content-center font-medium w-full h-screen">
+        <section className="grid w-full h-screen font-medium place-content-center">
           <img
             src={logo}
             alt="logo"
-            className="sm:w-28 w-24 sm:h-28 h-24 object-contain animate-pulse"
+            className="object-contain w-24 h-24 sm:w-28 sm:h-28 animate-pulse"
             width={112}
             height={112}
           />
